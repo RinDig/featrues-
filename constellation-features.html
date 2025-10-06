@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constellations - Feature Roadmap & Business Value</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e8e9f3;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        .category-section {
+            margin-bottom: 60px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .core { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .ai { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .workflow { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .analysis { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .engagement { background: linear-gradient(135deg, #fa709a, #fee140); }
+        
+        .category-info {
+            flex: 1;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .category-description {
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+        
+        .features-container {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .feature-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .quick-win {
+            background: #10b981;
+            color: #fff;
+        }
+        
+        .high-roi {
+            background: #f59e0b;
+            color: #fff;
+        }
+        
+        .enterprise {
+            background: #8b5cf6;
+            color: #fff;
+        }
+        
+        .feature-details {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .detail-section {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        .detail-label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .detail-content {
+            color: #e8e9f3;
+            line-height: 1.6;
+        }
+        
+        .implementation-timeline {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+        
+        .timeline-header {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-phases {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .phase {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+        
+        .phase-marker {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .phase-1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .phase-2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .phase-3 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        
+        .phase-content {
+            padding-top: 15px;
+        }
+        
+        .phase-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .phase-description {
+            color: #9ca3af;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .phase-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .phase-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .phase { grid-template-columns: 60px 1fr; }
+            .phase-marker { width: 60px; height: 60px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Constellations Feature Roadmap</h1>
+        <p class="subtitle">15 features that transform visual testing into a competitive advantage</p>
+        
+        <!-- Core Platform Features -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon core">🎯</div>
+                <div class="category-info">
+                    <div class="category-title">Core Platform Features</div>
+                    <div class="category-description">Foundation features that multiply the value of every test. These create immediate impact while building infrastructure for scale.</div>
+                </div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Time-Series Testing</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Run the same test at different time intervals (daily, weekly, monthly) to track how perception shifts. Automatically re-engage past participants or fresh audiences. Shows trend lines of how associations with the same images evolve over time, especially useful during campaigns or cultural moments.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Perception isn't static. A political message that resonates today might fail tomorrow after news events. Gaming companies can track hype decay/growth leading to launch. Universities can see how perception shifts through application season. This longitudinal data justifies ongoing retainers ($10K/month) rather than one-time projects.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Scheduling system for recurring tests. Trend visualization dashboard. Automated participant re-engagement. Change detection alerts. Development time: 2 weeks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Demographic Filtering</div>
+                        <div class="badges">
+                            <span class="badge enterprise">Enterprise</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Real-time filtering of heat map data by age, gender, location, income, and custom segments. Clients can instantly see how different demographics respond to the same visual, with results updating live as filters change.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                This is table stakes for enterprise clients. J.Crew needs to know if Gen Z women respond differently than millennial men. Political campaigns must see swing voter responses separate from base supporters. Without this, you're locked out of contracts over $50K. With it, you can charge 2-3x more because insights become actionable by audience.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Add demographic fields to participant data collection. Create indexed database queries with filter parameters. Front-end filter UI with state management. Development time: 2-3 weeks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Mobile-First Testing</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Optimized interface for smartphone participation. Touch-friendly heat mapping, swipe gestures for navigation, vertical layouts, and reduced data usage. Works perfectly on any device from iPhone SE to iPad Pro.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                70% of consumer audiences are on mobile. Without mobile optimization, you're excluding most participants or getting poor-quality data from frustrated users. College students exclusively use phones. Gaming audiences test during commutes. This feature directly impacts response rates and data quality, which clients notice immediately.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Responsive CSS refactor. Touch event handlers. Progressive image loading. Viewport optimizations. Development time: 1-2 weeks. Mostly front-end work.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI-Powered Features -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon ai">🤖</div>
+                <div class="category-info">
+                    <div class="category-title">AI-Powered Features</div>
+                    <div class="category-description">Intelligent automation that turns data into insights. These features reduce manual work while uncovering patterns humans miss.</div>
+                </div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Auto-Tag Generator</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                When clients upload images, AI automatically analyzes and tags them with style attributes (minimal, bold, vintage), color schemes, emotions (energetic, calm), and industry categories. Tags become searchable and filterable across all tests.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Clients spend hours categorizing images before testing. Auto-tagging saves 2-3 hours per project and enables powerful cross-test insights like "vintage styles consistently outperform modern across all our campaigns." For agencies running 10 tests monthly, this saves 30 hours of billable time they can redirect to strategy. It also builds a taxonomy database over time that becomes a competitive moat.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Single API call to GPT-4 Vision or Claude. Pass image, get structured JSON tags back. Store in database. Build simple UI for tag management. Development time: 3-4 days.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Report Writer</div>
+                        <div class="badges">
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Automatically generates executive summaries, insight reports, and recommendations from heat map data. Customizable tone (formal for boards, casual for creatives) and length. Includes key findings, statistical significance, and next steps.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Agencies charge $2-5K just for insight reports. This feature generates them in minutes, not days. More importantly, it helps non-analytical clients understand what the data means. A CMO doesn't want heat maps - they want to know "Young consumers prefer our heritage designs 3:1 over modern concepts." This turns data into decisions and justifies premium pricing.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Create report templates with variable slots. Pass heat map data + metadata to GPT-4. Generate sections iteratively. Add client branding. Export as PDF. Development time: 1-2 weeks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Anomaly Detection</div>
+                        <div class="badges">
+                            <span class="badge enterprise">Enterprise</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Identifies unusual response patterns that might indicate bot activity, sampling bias, or data quality issues. Flags when results deviate significantly from expected distributions. Can detect coordinated responses, speed-running, and random clicking.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Data quality is everything. One bad dataset can tank a campaign worth millions. Political campaigns are especially vulnerable to coordinated manipulation. This feature protects the integrity of insights, which protects client relationships. It also enables "verified data" premium pricing - charge 20% more for quality-assured results.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Start with statistical analysis (standard deviation, time-based patterns). Add ML model later for sophisticated detection. Flag suspicious responses for review. Development time: 2 weeks for basic, 2 months for ML.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workflow Features -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon workflow">⚡</div>
+                <div class="category-info">
+                    <div class="category-title">Workflow Features</div>
+                    <div class="category-description">Streamline operations from upload to insight. These features reduce friction and accelerate time-to-value for every test.</div>
+                </div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Template Library</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Pre-configured test templates for common use cases: movie posters (4 variations), logo testing (6 options), campaign visuals (hero + supporting), university recruitment (lifestyle + academic), etc. One-click setup with smart defaults for audience size, demographics, and questions.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Reduces new user setup time from 30 minutes to 2 minutes. More importantly, it shows clients what's possible. A gaming studio might not think to test character designs until they see the template. Templates become upsell opportunities - start with poster testing, expand to full campaign. They also standardize output, making cross-client benchmarking possible.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                JSON configuration files defining test structure. Simple template selector in UI. Ability to save custom templates. Development time: 1 week for 10 templates.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Batch Upload</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Drag and drop 50+ images at once into a single test or across multiple test groups. Automatic organization by naming patterns. Bulk operations for tagging, categorizing, and screen assignment. Smart grouping for variation sets (poster_v1, poster_v2, etc).
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Agencies often test entire campaigns (30-50 assets). Without batch upload, they spend an hour just uploading files one by one. This feature turns Constellations from a "single test" tool to a "campaign testing platform." It enables bigger deals - instead of selling 5 tests at $7.5K each, sell a 50-asset campaign test for $75K.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Modern file upload library (Dropzone.js or similar). Backend queue processing. Progress WebSocket updates. Folder organization logic. Development time: 1 week.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">White-Label Testing Links</div>
+                        <div class="badges">
+                            <span class="badge enterprise">Enterprise</span>
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Clients can send tests from their own domain (test.clientbrand.com) with their branding. Custom colors, logos, and messaging throughout the testing experience. Participants never see Constellations branding.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                This single feature can double your enterprise pricing. Big brands won't send customers to a third-party domain - it breaks trust and looks unprofessional. White-labeling transforms you from a vendor to invisible infrastructure. Universities can test from admissions.college.edu. Political campaigns from candidate.com/feedback. This feature alone justifies $100K+ annual contracts.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Subdomain wildcards. Database schema for client branding. CSS theming system. Custom domain CNAME setup. Development time: 2-3 weeks for full implementation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Features -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon analysis">📊</div>
+                <div class="category-info">
+                    <div class="category-title">Analysis Features</div>
+                    <div class="category-description">Transform raw data into competitive intelligence. These features create unique insights that become your clients' strategic advantage.</div>
+                </div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Export to Figma/Adobe</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                One-click export of winning designs, heat maps, and insights directly into Figma or Adobe Creative Cloud. Includes annotations, scores, and demographic breakdowns as layers. Designers stay in their tools while accessing data.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Designers hate context switching. This feature keeps them in their creative flow while incorporating data. More importantly, it makes Constellations part of the standard design workflow, not an extra step. Once embedded in daily tools, clients never leave. Agencies using this feature have 3x higher retention rates. It also enables design tool partnerships and co-marketing opportunities.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Figma and Adobe APIs are well-documented. Build plugins for each platform. Export format handlers. Authentication flow. Development time: 2 weeks per platform.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Competitive Benchmarking</div>
+                        <div class="badges">
+                            <span class="badge enterprise">Enterprise</span>
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Compare test results against industry averages built from anonymous, aggregated data. See if your campaign visuals perform above or below category benchmarks. Track trends over time (e.g., "minimal designs up 23% this quarter").
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                This creates a data moat competitors can't match. Every test makes the benchmarks better. Clients pay premium for context - knowing you scored 72% means nothing, knowing you're 15 points above industry average means everything. Gaming companies want to know if their character designs test better than average. Universities want to know if their campaigns resonate more than peer institutions. This feature enables $200K+ annual contracts.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Anonymous data aggregation pipeline. Statistical normalization. Industry categorization. Benchmark calculation engine. Privacy controls. Development time: 3-4 weeks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Custom Scoring Algorithms</div>
+                        <div class="badges">
+                            <span class="badge enterprise">Enterprise</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Clients can weight different demographics, regions, or response types differently in final scores. A luxury brand might weight high-income responses 3x. A university might prioritize out-of-state students. Political campaigns can focus on swing voters.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Generic insights are commodity. Custom insights are strategic. This feature transforms Constellations from a testing tool to a strategic platform aligned with specific business goals. It justifies consulting-level pricing because you're not just providing data, you're providing decision intelligence. Clients become dependent on their custom algorithms, reducing churn to near zero.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Weighted average calculation engine. UI for setting weights. Algorithm versioning. A/B testing of algorithms. Development time: 2 weeks for basic, 4 weeks for advanced.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engagement Features -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon engagement">🎮</div>
+                <div class="category-info">
+                    <div class="category-title">Engagement Features</div>
+                    <div class="category-description">Turn one-time tests into ongoing relationships. These features improve response quality while building valuable audience assets.</div>
+                </div>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Follow-up Surveys</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                After heat mapping, trigger contextual questions based on choices. If someone dislikes all modern designs, ask why. If they love vintage, explore what era. Questions branch dynamically based on previous answers, creating conversational depth.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Heat maps show what. Follow-ups reveal why. This transforms insights from "Young people prefer Design A" to "Young people prefer Design A because it reminds them of streetwear brands they trust." This deeper understanding justifies 2-3x higher pricing. Agencies can charge $15K instead of $5K because they're delivering strategy, not just data. The qualitative insights also make better case studies and client stories.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Branching logic engine. Question bank management. Response aggregation. Natural language processing for open-text answers. Development time: 1-2 weeks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Participant Pools</div>
+                        <div class="badges">
+                            <span class="badge high-roi">High ROI</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Build and maintain your own testing audience. Participants can opt-in to future tests. Tag them by interests, demographics, and past responses. Re-engage for new tests with one click. Track participation history and quality scores.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                Recruiting participants costs $20-100 per person through panels. Building your own pool eliminates this cost after initial investment. More importantly, it enables longitudinal studies - track how the same audience's preferences evolve. Gaming companies can build pools of their actual players. Universities can maintain pools of prospective students. This creates switching costs - clients won't leave if it means losing their cultivated audience.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                User registration system. Opt-in management. Email engagement tools. Audience segmentation. Quality scoring algorithm. Development time: 3-4 weeks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-name">Thank You Personalization</div>
+                        <div class="badges">
+                            <span class="badge quick-win">Quick Win</span>
+                        </div>
+                    </div>
+                    <div class="feature-details">
+                        <div class="detail-section">
+                            <div class="detail-label">What It Does</div>
+                            <div class="detail-content">
+                                Customized completion messages based on client brand and participant behavior. Can include discount codes, early access offers, or insider information. Messages can vary by response patterns - someone who loved everything gets different messaging than a critic.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Business Value</div>
+                            <div class="detail-content">
+                                This simple feature can increase response rates by 25-40%. More responses = better data = higher value insights. It also turns testing into a marketing channel. Gaming companies can offer beta access to engaged participants. Retailers can provide exclusive discounts. Universities can invite high-interest students to campus. The feature pays for itself through improved data quality alone, but also enables new revenue streams.
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-label">Implementation</div>
+                            <div class="detail-content">
+                                Template system with variables. Client-customizable messages. Response-pattern triggers. Integration with client reward systems. Development time: 3-4 days.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Timeline -->
+        <div class="implementation-timeline">
+            <h2 class="timeline-header">Strategic Implementation Timeline</h2>
+            
+            <div class="timeline-phases">
+                <div class="phase">
+                    <div class="phase-marker phase-1">Q1</div>
+                    <div class="phase-content">
+                        <div class="phase-title">Quick Wins & Foundation (Weeks 1-12)</div>
+                        <div class="phase-description">
+                            Ship high-impact, low-effort features that deliver immediate value and build trust with early clients. Focus on features that can be built in days/weeks but create lasting competitive advantages. Goal: 5x current revenue through improved conversion and upsells.
+                        </div>
+                        <div class="phase-features">
+                            <span class="phase-feature">Template Library</span>
+                            <span class="phase-feature">Auto-Tag Generator</span>
+                            <span class="phase-feature">Time-Series Testing</span>
+                            <span class="phase-feature">Follow-up Surveys</span>
+                            <span class="phase-feature">Export to Figma</span>
+                            <span class="phase-feature">Mobile Optimization</span>
+                            <span class="phase-feature">Thank You Messages</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-marker phase-2">Q2</div>
+                    <div class="phase-content">
+                        <div class="phase-title">Scale & Differentiation (Weeks 13-24)</div>
+                        <div class="phase-description">
+                            Add features that unlock larger deals and enterprise clients. Build the infrastructure for recurring revenue and deeper insights. These features create switching costs and data moats competitors can't easily replicate. Target: $100K+ average contract value.
+                        </div>
+                        <div class="phase-features">
+                            <span class="phase-feature">Demographic Filtering</span>
+                            <span class="phase-feature">Batch Upload</span>
+                            <span class="phase-feature">Report Writer</span>
+                            <span class="phase-feature">Participant Pools</span>
+                            <span class="phase-feature">Basic Benchmarking</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-marker phase-3">Q3</div>
+                    <div class="phase-content">
+                        <div class="phase-title">Enterprise & Market Leadership (Weeks 25-36)</div>
+                        <div class="phase-description">
+                            Launch premium features that justify $500K+ annual contracts. Focus on white-labeling, advanced analytics, and features that make Constellations indispensable infrastructure. Build network effects where every client makes the platform more valuable. Goal: Become the industry standard for visual perception testing.
+                        </div>
+                        <div class="phase-features">
+                            <span class="phase-feature">White-Label Links</span>
+                            <span class="phase-feature">Full Benchmarking</span>
+                            <span class="phase-feature">Custom Scoring</span>
+                            <span class="phase-feature">Anomaly Detection</span>
+                            <span class="phase-feature">Advanced ML Features</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
